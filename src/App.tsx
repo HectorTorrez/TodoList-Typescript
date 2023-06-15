@@ -3,34 +3,34 @@ import { useState } from 'react'
 import './App.css'
 import { Form } from './components/Form'
 import { TodoList } from './components/TodoList'
+import { Task } from './types/taskTypes'
 
 export const App= () => {
 
-    interface Todo {
-        id: number
-        todo: string,
-        done: boolean
-    }
+  
 
-    const [todo, setTodo] = useState<Array<Todo>>()
+    const [todos, setTodos] = useState<Array<Task>>([{
+      id: crypto.randomUUID(),
+      todo: 'hola',
+      done: false
+    }])
 
     const handleAdd = (text: string) =>{
-        setTodo([...todo,{
-            id: Math.random(),
+      if(text === '') return
+      setTodos([...todos,{
+            id: crypto.randomUUID(),
             todo: text,
             done: false
         }])
     }
 
 
-    console.log(todo)
-
 
   return (
-    <>
+    <section >
       <Form handleAdd={handleAdd}/>
-      <TodoList todo={todo}/>
-    </>
+      <TodoList todos={todos}/>
+    </section>
   )
 }
 

@@ -1,21 +1,19 @@
+import { Todo } from "../types/taskTypes"
+import { TodoCard } from "./TodoCard"
 
-interface Prop{
-    id: number,
-    todo: string,
-    done: boolean
-}
 
-export const TodoList = ({todo}: Prop) => {
-    
+export const TodoList = ({todos}: Todo) => {
+
   return (
     <>
+      
     {
-        todo.map(t=> {
-            <ul key={t.id}>
-                <li>{t.todo}</li>
-            </ul>
-        })
-    }
+        todos.map(todo=> (
+          <TodoCard key={todo.id} todo={todo}  />
+          
+        ))
+     }
+            
     </>
   )
 }
