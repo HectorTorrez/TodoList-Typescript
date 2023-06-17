@@ -23,7 +23,7 @@ export const App = () => {
 
 
   const [todos, setTodos] = useState<Array<Task>>(
-    JSON.parse(localStorage.getItem('todos') || "")
+    JSON.parse(localStorage.getItem('todos') || "[]")
   )
   const [filter, setFilter] = useState<string>('all')
 
