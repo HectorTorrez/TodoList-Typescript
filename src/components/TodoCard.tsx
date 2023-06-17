@@ -19,12 +19,20 @@ const SECTION = styled.section`
   background-color: white;
   overflow-wrap: break-word;
 `
+const P_WHITHOUT_LINE =  styled.p`
+  width: 250px;
+  background-color: white;
+  overflow-wrap: break-word;
+  text-align: center;
+  
+`
 
 const P =  styled.p`
   width: 250px;
   background-color: white;
   overflow-wrap: break-word;
   text-align: center;
+  text-decoration-line: line-through;
 `
 
 const BUTTON = styled.button`
@@ -47,7 +55,15 @@ export const TodoCard = ({todo, handleDelete, handleChangeTodo}:Todo ) => {
             <input type="checkbox" checked={todo.done} onChange={(e) => {
               handleChangeTodo(todo.id, e.target.checked)
             }} name="" id="" />
-            <P>{todo.todo}</P>
+            {
+              todo.done ? (
+                <P>{todo.todo}</P>
+
+              ) : (
+                <P_WHITHOUT_LINE>{todo.todo}</P_WHITHOUT_LINE>
+
+              )
+            }
             <BUTTON onClick={() => handleDelete(todo.id)}>Delete</BUTTON>
     </SECTION>
   )
